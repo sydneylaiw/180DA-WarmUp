@@ -15,6 +15,9 @@
 #
 #    http://ozzmaker.com/
 
+'''
+code referenced from: https://github.com/ozzmaker/BerryIMU
+'''
 
 
 import sys
@@ -404,7 +407,7 @@ with open('data.csv', 'w', newline='') as csvfile:
         if 1:                       #Change to '0' to stop  showing the angles from the Kalman filter
             outputString +="# kalmanX %5.2f   kalmanY %5.2f #" % (kalmanX,kalmanY)
 
-        # print(outputString)
+        print(outputString)
 
         writer.writerow({"accX": AccXangle, "accY": AccYangle, "gyroX": gyroXangle, "gyroY": gyroYangle, "gyroZ": gyroZangle})
 
@@ -413,6 +416,7 @@ with open('data.csv', 'w', newline='') as csvfile:
             print("right tilt detected")
         elif AccXangle < 25 and AccYangle > 50 and gyroYangle > 50:
             print("left tilt detected")
+
         #slow program down a bit, makes the output more readable
         time.sleep(0.03)
 
